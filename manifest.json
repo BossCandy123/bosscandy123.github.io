@@ -1,0 +1,80 @@
+{
+  "manifest_version": 3,
+  "name": "EclipseStud Copilot OpenAI - LOAD THIS",
+  "short_name": "EclipseStud",
+  "version": "2.8.0",
+  "description": "A private MV3 live-room copilot for EclipseStud with OpenAI replies, room titles, goal helpers, session memory, and an isolated in-page panel.",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "alarms",
+    "clipboardWrite",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://stripchat.com/*",
+    "https://*.stripchat.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://api.openai.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://localhost/*",
+    "https://127.0.0.1/*"
+  ],
+  "icons": {
+    "16": "assets/es_copilot_icon16.png",
+    "48": "assets/es_copilot_icon48.png",
+    "128": "assets/es_copilot_icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "EclipseStud Copilot"
+  },
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stripchat.com/*",
+        "https://*.stripchat.com/*"
+      ],
+      "js": [
+        "page_key_guard.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://stripchat.com/*",
+        "https://*.stripchat.com/*"
+      ],
+      "js": [
+        "content_script.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/es_copilot_icon16.png",
+        "assets/es_copilot_icon48.png",
+        "assets/es_copilot_icon128.png",
+        "assets/es_copilot_brand512.png"
+      ],
+      "matches": [
+        "https://stripchat.com/*",
+        "https://*.stripchat.com/*"
+      ]
+    }
+  ]
+}

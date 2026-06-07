@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EclipseStud Copilot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/es_copilot_icon48.png" alt="">
+      <div>
+        <h1>EclipseStud Copilot</h1>
+        <p id="statusLine">Loading...</p>
+      </div>
+    </div>
+    <button id="settingsBtn" class="icon-btn" type="button" title="Settings">Settings</button>
+  </header>
+
+  <main>
+    <section class="hero-panel">
+      <div>
+        <span class="eyebrow">Live room</span>
+        <h2>Human replies without slowing the show down.</h2>
+      </div>
+      <button id="openPanelBtn" class="primary" type="button">Open room panel</button>
+    </section>
+
+    <section class="status-grid" aria-label="Extension status">
+      <div>
+        <strong id="modeValue">Local</strong>
+        <span>AI mode</span>
+      </div>
+      <div>
+        <strong id="memoryValue">0</strong>
+        <span>room turns</span>
+      </div>
+      <div>
+        <strong id="viewerValue">0</strong>
+        <span>viewers</span>
+      </div>
+    </section>
+
+    <div id="dashContext" class="dash-context" hidden>
+      <span class="dash-context-label">Dashboard room</span>
+      <strong id="dashRoomTitle"></strong>
+      <span id="dashGoal"></span>
+    </div>
+
+    <section class="composer">
+      <label for="viewerMessage">Quick reply</label>
+      <textarea id="viewerMessage" rows="4" placeholder="Paste a viewer message..."></textarea>
+      <div class="inline-fields">
+        <select id="viewerType" aria-label="Viewer type">
+          <option value="grey">Grey</option>
+          <option value="registered" selected>Registered</option>
+          <option value="casual_tip">Casual tipper</option>
+          <option value="big_tip">Big tipper</option>
+          <option value="regular">Regular</option>
+          <option value="fan_club">Fan club</option>
+          <option value="knight">Knight</option>
+          <option value="pushy">Pushy</option>
+          <option value="lurker">Lurker</option>
+        </select>
+        <select id="intent" aria-label="Intent">
+          <option value="reply">Reply</option>
+          <option value="keep_chat">Keep chat</option>
+          <option value="tip_friendly">Tip friendly</option>
+          <option value="defuse">Defuse</option>
+          <option value="boundary">Boundary</option>
+          <option value="thank_tipper">Thank tipper</option>
+          <option value="wake_chat">Wake chat</option>
+        </select>
+      </div>
+      <button id="generateBtn" class="primary wide" type="button">Generate three replies</button>
+    </section>
+
+    <section id="replySection" class="reply-section" hidden>
+      <div id="replies" class="replies"></div>
+      <div class="action-row">
+        <button id="copyBtn" type="button">Copy selected</button>
+        <button id="shortenBtn" type="button">Shorter</button>
+        <button id="warmerBtn" type="button">Warmer</button>
+      </div>
+    </section>
+
+    <section class="quick-actions">
+      <button id="wakeBtn" type="button">Wake line</button>
+      <button id="topicBtn" type="button">Room topic</button>
+      <button id="dashboardBtn" type="button">Web app</button>
+    <span id="dashBridgeStatus" class="dash-status" title="Dashboard bridge status"></span>
+    <span id="dashQueueStatus" class="dash-queue" title="Items in dashboard queue"></span>
+      <button id="resetBtn" type="button">Reset memory</button>
+    </section>
+  </main>
+
+  <footer id="footerNote">Personal unpacked build. Keep keys in Settings, not source files.</footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

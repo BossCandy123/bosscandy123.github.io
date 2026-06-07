@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EclipseStud Copilot Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="brand">
+      <img src="assets/es_copilot_icon48.png" alt="">
+      <div>
+        <h1>EclipseStud Copilot Settings</h1>
+        <p id="statusLine">Tune the assistant once, then let it move fast in the room.</p>
+      </div>
+    </div>
+    <button id="saveBtn" class="primary" type="button">Save settings</button>
+  </header>
+
+  <main>
+    <section class="band">
+      <div class="section-heading">
+        <h2>AI Connection</h2>
+        <p>OpenAI is the only AI route. Direct mode is simplest; backend mode keeps the key outside the extension.</p>
+      </div>
+      <div class="form-grid">
+        <label>Mode
+          <select id="aiMode">
+            <option value="direct">Direct AI API</option>
+            <option value="backend">Backend proxy</option>
+          </select>
+        </label>
+        <label>Model ID
+          <input id="model" list="modelOptions" spellcheck="false">
+        </label>
+        <label>Fallback model
+          <input id="fallbackModel" list="modelOptions" spellcheck="false">
+        </label>
+        <datalist id="modelOptions">
+          <option value="gpt-5-mini"></option>
+          <option value="gpt-5-nano"></option>
+          <option value="gpt-5"></option>
+        </datalist>
+        <label>Backend URL
+          <input id="backendUrl" placeholder="http://127.0.0.1:8787/generate" spellcheck="false">
+        </label>
+        <label class="full">OpenAI API key
+          <input id="apiKey" type="password" placeholder="sk-..." spellcheck="false" autocomplete="off">
+        </label>
+        <label class="check full">
+          <input id="rememberApiKey" type="checkbox">
+          <span>Remember API key locally on this browser</span>
+        </label>
+      </div>
+      <div class="button-row">
+        <button id="fastPresetBtn" type="button">Fast GPT-5</button>
+        <button id="qualityPresetBtn" type="button">Quality GPT-5</button>
+        <button id="testBtn" type="button">Test connection</button>
+        <button id="clearKeyBtn" type="button">Clear saved key</button>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section-heading">
+        <h2>Persona</h2>
+        <p>These instructions sit at the front of every AI request and shape the reply voice.</p>
+      </div>
+      <div class="form-grid">
+        <label>Creator name
+          <input id="personaName" maxlength="80">
+        </label>
+        <label class="full">Style
+          <textarea id="personaStyle" rows="4"></textarea>
+        </label>
+        <label class="full">House rules
+          <textarea id="houseRules" rows="5"></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section-heading">
+        <h2>Live Panel</h2>
+        <p>Keep the panel focused on features you actually use during a show.</p>
+      </div>
+      <div class="toggle-grid">
+        <label class="check"><input id="enabled" type="checkbox"><span>Enable copilot</span></label>
+        <label class="check"><input id="overlayAutoOpen" type="checkbox"><span>Open panel automatically</span></label>
+        <label class="check"><input id="featureReplies" type="checkbox"><span>Replies tab</span></label>
+        <label class="check"><input id="featureTips" type="checkbox"><span>Today's title tab</span></label>
+        <label class="check"><input id="featureGoals" type="checkbox"><span>Goals tab</span></label>
+        <label class="check"><input id="featureTools" type="checkbox"><span>Live tools tab</span></label>
+        <label class="check"><input id="featureRoom" type="checkbox"><span>Room tab</span></label>
+        <label class="check"><input id="operatorBridgeEnabled" type="checkbox"><span>Allow dashboard commands</span></label>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section-heading">
+        <h2>Memory & Privacy</h2>
+        <p>Live room memory stays in session storage and is pruned automatically.</p>
+      </div>
+      <div class="form-grid">
+        <label>Recent turns
+          <input id="maxTurns" type="number" min="10" max="200" step="5">
+        </label>
+        <label>Viewer notes
+          <input id="maxViewers" type="number" min="10" max="250" step="5">
+        </label>
+        <label>Prompt token budget
+          <input id="maxPromptTokens" type="number" min="1000" max="18000" step="250">
+        </label>
+        <label>Diagnostics kept
+          <input id="diagnosticsLimit" type="number" min="10" max="300" step="10">
+        </label>
+      </div>
+      <div class="toggle-grid">
+        <label class="check"><input id="sendRoomContext" type="checkbox"><span>Send compact room context to AI</span></label>
+        <label class="check"><input id="saveDiagnostics" type="checkbox"><span>Save local diagnostics</span></label>
+      </div>
+      <div class="button-row">
+        <button id="resetMemoryBtn" type="button">Reset live memory</button>
+        <button id="pruneMemoryBtn" type="button">Prune now</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

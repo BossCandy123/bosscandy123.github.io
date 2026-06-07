@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EclipseStud Copilot Web App</title>
+    <link rel="stylesheet" href="/dashboard/operator.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Application navigation">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="/dashboard/icon.png" alt="EC" onerror="this.style.display='none'; this.parentNode.textContent='EC';" />
+          </div>
+          <div>
+            <p class="brand-kicker">EclipseStud</p>
+            <h1>Copilot Web App</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Dashboard sections">
+          <a href="#workspace" class="nav-link active">Workspace <span class="nav-kbd">1-4</span></a>
+          <a href="#queue" class="nav-link" id="queueNavLink">Action queue <span class="queue-badge" id="queueNavBadge" hidden></span></a>
+          <a href="#room" class="nav-link">Room feed</a>
+          <a href="#setup" class="nav-link">Auto setup</a>
+        </nav>
+
+        <section class="sidebar-card ai-brain-card" id="setup">
+          <div class="small-heading">AI Session Brain <span class="ai-pill">GPT-5.5 Extra High Reasoning</span></div>
+          <div class="ai-brain-status" id="aiBrainStatus">
+            <div class="brain-line">Analyzing room signals + memory...</div>
+            <div class="brain-line" id="aiBrainInsight">The AI is watching. Best next move will appear here or in the room panel.</div>
+          </div>
+          <ol class="setup-list" id="setupList"></ol>
+          <div class="setup-actions">
+            <button id="openStripChatBtn" type="button">Open StripChat</button>
+            <button id="openBroadcastBtn" type="button">Broadcast center</button>
+          </div>
+          <div class="ai-setup-tip">
+            <strong>Core Philosophy:</strong> This webapp + the in-room Live Copilot are one AI system. The model should barely think or type. Use the ★ High Reasoning AI Plan button or just let the copilot surface things.
+          </div>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="page-label">AI Operator Console <span class="ai-pill">GPT-5.5 Extra High Reasoning</span></p>
+            <h2>The AI *is* the extension. You steer at high level.</h2>
+          </div>
+          <div class="statusbar">
+            <span class="status-pill" id="bridgeStatus">Checking bridge</span>
+            <span class="status-pill muted" id="providerStatus">Provider: --</span>
+            <span class="status-pill muted" id="modelStatus">Model: --</span>
+            <span class="status-pill muted" id="commandStatus" aria-live="polite">Commands idle</span>
+            <span class="status-pill muted" style="font-size:0.65rem;min-height:22px;padding:2px 6px;" title="Local only">v2.8.0</span>
+            <button id="aiPlanBtn" type="button" class="primary-btn" style="min-height:26px; padding:4px 12px; font-size:0.7rem;">★ Run Full AI Session Plan</button>
+          </div>
+        </header>
+
+        <!-- AI *IS* THE WEBAPP. This is the command center for the autonomous high-reasoning AI that is actually running the room.
+             The model (or you) watches the AI brain, gives high-level direction, and lets it execute.
+             Everything below the AI Brain is secondary "expert override" and collapsed by default. -->
+        <section class="ai-brain-main" aria-label="Live AI Operator Brain - This is the product">
+          <div class="ai-brain-header">
+            <strong>Live AI Operator Brain</strong>
+            <span class="ai-pill">GPT-5.5 Extra High Reasoning • Autonomous Core</span>
+            <button id="refreshBrainBtn" type="button" class="ghost-btn" style="min-height:24px;padding:2px 8px;font-size:0.65rem;">Force Full Re-Reason</button>
+            <button id="autoRunBtn" type="button" class="primary-btn" style="min-height:24px;padding:2px 10px;font-size:0.65rem;">Let AI Autonomously Run the Next 15 mins</button>
+          </div>
+          <div class="ai-brain-content">
+            <div class="brain-analysis" id="liveBrainAnalysis">
+              The AI is running the show. It ingests every tip, chat pattern, energy shift, and your personal success memory. It runs explicit high-reasoning (CoT + self-critique + simulation of what will convert vs. kill momentum), then proposes executable plans.
+              <br><br>
+              You steer at the strategy level. Approve a plan, give high-level direction ("more flirty", "protect energy", "push conversion"), or let it execute autonomously. The goal is you (or the model) barely have to think or type while performing.
+            </div>
+            <div class="brain-plan" id="liveBrainPlan">
+              <!-- Full multi-step autonomous plans the AI can execute with one click: sequence of titles + goals + replies + energy management, with reasoning trace -->
+            </div>
+            <div class="brain-suggestions" id="liveBrainSuggestions">
+              <!-- Live high-reasoning suggestions that update as room signals change -->
+            </div>
+          </div>
+          <div class="ai-brain-meta">
+            <span>Reasoning: Extra High (multi-step CoT + self-critique + outcome simulation + your personal success memory)</span>
+            <span>Last deep think: <span id="lastBrainThink">just now</span></span>
+          </div>
+        </section>
+
+        <!-- Legacy manual UI is now buried. In the new AI-native reality, you should almost never touch this. The AI is the extension. -->
+        <details class="legacy-workspace">
+          <summary>Expert Override / Manual Tools (collapsed by default — AI handles 95%+)</summary>
+          <div class="legacy-note">These are the old pre-AI manual generators. The upgraded project makes the AI the actual extension. Use these only for edge cases or if the autonomous brain is intentionally disabled.</div>
+
+        <section class="summary-grid" aria-label="Live status summary">
+          <article class="summary-card accent-cyan">
+            <span>Room title</span>
+            <strong id="roomTitle">Waiting for room signals</strong>
+          </article>
+          <article class="summary-card accent-pink">
+            <span>Current goal</span>
+            <strong id="goalSummary">No goal captured yet</strong>
+          </article>
+          <article class="summary-card accent-amber">
+            <span>Room pace</span>
+            <strong id="roomPace">steady</strong>
+          </article>
+          <article class="summary-card accent-green">
+            <span>Last viewer</span>
+            <strong id="lastViewer">--</strong>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <section class="panel workspace-panel" id="workspace">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">AI workspace</p>
+                <h3>Generate and queue lines</h3>
+              </div>
+              <span class="counter-chip" id="sourceChip">Source: OpenAI</span>
+            </div>
+
+            <div class="task-tabs" role="tablist" aria-label="Generation type">
+              <button class="task-tab active" type="button" data-task="reply_suggestions">Replies</button>
+              <button class="task-tab" type="button" data-task="stream_titles">Today's title</button>
+              <button class="task-tab" type="button" data-task="token_goals">Five goals</button>
+              <button class="task-tab" type="button" data-task="engagement_prompts">Wake room</button>
+            </div>
+
+            <form id="generateForm" class="generation-form">
+              <div class="form-row">
+                <label>
+                  <span>Viewer</span>
+                  <input id="viewerName" name="viewerName" placeholder="optional name" autocomplete="off" />
+                </label>
+                <label>
+                  <span>Tone</span>
+                  <select id="tone" name="tone">
+                    <option value="natural, quick, human">Natural</option>
+                    <option value="playful, concise, warm">Playful</option>
+                    <option value="flirty, direct, controlled">Flirty</option>
+                    <option value="firm, calm, boundary-safe">Firm</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Goal target</span>
+                  <input id="targetTokens" name="targetTokens" type="number" min="0" step="50" value="750" />
+                </label>
+              </div>
+
+              <label>
+                <span id="messageLabel">Viewer message or title notes</span>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Paste the viewer line, title idea, room mood, or goal notes..."
+                ></textarea>
+              </label>
+
+              <label>
+                <span>Room context</span>
+                <textarea
+                  id="context"
+                  name="context"
+                  rows="4"
+                  placeholder="Game, room mood, current goal, last tipper, or anything the AI should know..."
+                ></textarea>
+              </label>
+
+              <div class="button-row">
+                <button class="primary-btn" id="generateBtn" type="submit">Generate and queue</button>
+                <button id="useRoomBtn" type="button">Use live room</button>
+                <button id="clearFormBtn" type="button">Clear</button>
+              </div>
+            </form>
+
+            <div class="manual-enqueue">
+              <div class="manual-enqueue-header">
+                <span>Or add manually (from popup or notes)</span>
+              </div>
+              <div class="manual-enqueue-row">
+                <input id="manualEnqueueText" type="text" placeholder="Paste a line to add directly to queue..." />
+                <button id="manualEnqueueBtn" type="button" class="secondary-btn">Add to queue</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel queue-panel" id="queue">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Action queue (AI-prioritized - drag to reorder, order persists)</p>
+                <h3>Ready for StripChat — lowest effort, highest value first</h3>
+              </div>
+              <span class="counter-chip" id="queueCount">0 queued</span>
+              <div class="queue-bulk-actions">
+                <button id="selectAllBtn" type="button" class="ghost-btn" style="min-height:26px;padding:2px 8px;font-size:0.65rem;">Select all</button>
+                <button id="sendAllBtn" type="button" class="secondary-btn" style="min-height:26px;padding:2px 10px;font-size:0.65rem;">Send all ready</button>
+                <button id="sendSelectedBtn" type="button" class="send-btn" style="min-height:26px;padding:2px 10px;font-size:0.65rem;" disabled>Send selected</button>
+                <button id="dismissSelectedBtn" type="button" class="ghost-btn" style="min-height:26px;padding:2px 8px;font-size:0.65rem;" disabled>Dismiss selected</button>
+                <button id="clearQueueBtn" type="button" class="ghost-btn" style="min-height:26px;padding:2px 8px;font-size:0.65rem;">Clear all</button>
+              </div>
+            </div>
+            <div class="queue-list" id="queueList"></div>
+          </section>
+        </section>
+
+        <section class="lower-grid" id="room">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Quick events</p>
+                <h3>Feed the assistant</h3>
+              </div>
+            </div>
+            <div class="trigger-grid">
+              <button type="button" data-demo="chat_turn">New chatter</button>
+              <button type="button" data-demo="tip_received">Tip landed</button>
+              <button type="button" data-demo="viewer_returned">Regular returned</button>
+              <button type="button" data-demo="room_slowdown">Room slowing</button>
+              <button type="button" data-demo="title_refresh">Refresh title</button>
+            </div>
+            <form id="manualEventForm" class="manual-form">
+              <label>
+                <span>Manual room note</span>
+                <textarea id="manualMessage" rows="4" placeholder="Add a room event and generate replies..."></textarea>
+              </label>
+              <button class="secondary-btn" type="submit">Add event</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Live feed</p>
+                <h3>Recent room signals</h3>
+              </div>
+              <span class="counter-chip" id="eventCount">0 events</span>
+            </div>
+            <div class="feed-list" id="feedList"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Diagnostics</p>
+                <h3>Bridge and AI health</h3>
+              </div>
+            </div>
+            <div class="diagnostic-list" id="diagnosticList"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <template id="queueItemTemplate">
+      <article class="queue-item">
+        <div class="queue-meta">
+          <label class="queue-select">
+            <input type="checkbox" class="queue-checkbox" />
+          </label>
+          <span class="queue-kind"></span>
+          <span class="queue-label"></span>
+          <span class="queue-command-status"></span>
+        </div>
+        <p class="queue-text"></p>
+        <div class="queue-actions">
+          <span class="queue-source"></span>
+          <div class="queue-action-buttons">
+            <button class="send-btn" type="button">Send to extension</button>
+            <button class="copy-btn" type="button">Copy</button>
+            <button class="dismiss-btn" type="button">Dismiss</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <template id="feedItemTemplate">
+      <article class="feed-item">
+        <div class="item-row">
+          <strong class="feed-title"></strong>
+          <span class="feed-time"></span>
+        </div>
+        <p class="feed-subtitle"></p>
+        <p class="feed-message"></p>
+      </article>
+    </template>
+
+    <template id="diagnosticItemTemplate">
+      <article class="diagnostic-item">
+        <div class="item-row">
+          <strong class="diagnostic-type"></strong>
+          <span class="feed-time"></span>
+        </div>
+        <p class="diagnostic-message"></p>
+      </article>
+    </template>
+
+    <script type="module" src="/dashboard/operator.js"></script>
+  </body>
+</html>

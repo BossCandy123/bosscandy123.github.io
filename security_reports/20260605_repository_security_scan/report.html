@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EclipseStud Copilot Security Scan</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #070910;
+        --panel: #101524;
+        --line: #2a3550;
+        --text: #f7f3ff;
+        --muted: #aeb7ca;
+        --pink: #ff2ab1;
+        --cyan: #25d9ff;
+        --green: #60e6a8;
+        --amber: #ffd166;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 42px 0 70px;
+      }
+      h1, h2, h3 { line-height: 1.15; }
+      h1 { margin: 0 0 12px; font-size: clamp(32px, 5vw, 56px); }
+      h2 { margin-top: 36px; border-top: 1px solid var(--line); padding-top: 28px; }
+      h3 { color: var(--cyan); }
+      p, li { color: #dce2f3; }
+      code, pre {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0b1020;
+        color: #f7f3ff;
+      }
+      code { padding: 2px 5px; }
+      pre { padding: 16px; overflow: auto; }
+      .summary, .finding, .residual {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 18px;
+        margin: 16px 0;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        padding: 3px 10px;
+        font-weight: 800;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+      }
+      .fixed { color: var(--green); }
+      .accepted { color: var(--amber); }
+      .meta { color: var(--muted); }
+      a { color: var(--cyan); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="meta">2026-06-05 | Scope: C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension</p>
+      <h1>EclipseStud Copilot Security Scan</h1>
+      <section class="summary">
+        <p><span class="badge fixed">No open high findings</span></p>
+        <p>No open critical or high severity findings were identified in the reviewed local extension and local web-app service.</p>
+        <p>Two hardening issues were found, fixed, and tested. One local-only token storage risk remains accepted for this private package.</p>
+      </section>
+
+      <h2>Fixed Findings</h2>
+      <article class="finding">
+        <h3>P2 Fixed: Local dashboard could be framed</h3>
+        <p>Added frame denial, nosniff, no-referrer, no-store, and <code>frame-ancestors 'none'</code> headers to the local web app and legacy backend proxy.</p>
+        <p>Evidence: <code>creator-copilot-service/src/app.js:24</code>, <code>creator-copilot-service/src/app.js:225-230</code>, <code>backend-proxy/server.js:175-187</code>, <code>creator-copilot-service/test/service.test.js:236-242</code>.</p>
+      </article>
+      <article class="finding">
+        <h3>P3 Fixed: Page-key bridge accepted forged page messages</h3>
+        <p>Restricted the bridge to same-origin messages and exactly one <code>c</code> key. Added a forged-message regression test.</p>
+        <p>Evidence: <code>content_script.js:230-238</code>, <code>diagnostics/run_mock_full_test.mjs:204-214</code>.</p>
+      </article>
+
+      <h2>Accepted Residual Risk</h2>
+      <article class="residual">
+        <h3>P3 Accepted: Local operator token stored in the project folder</h3>
+        <p>The token in <code>backend-proxy/es-backend-token.txt</code> is required for the private local extension/dashboard bridge. It is not the OpenAI key, but the project zip should not be shared publicly with that token intact.</p>
+        <p>Evidence: <code>service_worker.js:764-771</code>, <code>creator-copilot-service/start-local-operator.ps1:126-135</code>, <code>creator-copilot-service/src/app.js:348-354</code>.</p>
+      </article>
+
+      <h2>Controls Verified</h2>
+      <ul>
+        <li>Manifest host permissions are StripChat-scoped with OpenAI and localhost as optional permissions.</li>
+        <li>Extension CSP blocks remote extension-page scripts and eval-style execution.</li>
+        <li>Operator APIs require <code>x-operator-key</code>.</li>
+        <li>Request bodies are size-limited.</li>
+        <li>Webhook signatures use HMAC over the raw body.</li>
+        <li>UI-facing settings strip API keys before returning state.</li>
+        <li>Dashboard renders generated content through <code>textContent</code>.</li>
+        <li>OpenAI output is schema-constrained and exact-count validated.</li>
+        <li>Operator commands are type-limited and expire before execution.</li>
+      </ul>
+
+      <h2>Verification</h2>
+      <pre>node --check content_script.js
+node --check creator-copilot-service/src/app.js
+node --check backend-proxy/server.js
+node --check diagnostics/run_mock_full_test.mjs
+node --test   (in creator-copilot-service) - 11/11 pass
+node diagnostics/run_mock_full_test.mjs
+node diagnostics/run_dashboard_render_test.mjs
+node diagnostics/run_reliability_test.mjs
+node diagnostics/run_goal_service_test.mjs
+node diagnostics/run_edge_extension_keyboard_test.mjs</pre>
+
+      <p class="meta">Full markdown details are in <code>report.md</code>.</p>
+    </main>
+  </body>
+</html>

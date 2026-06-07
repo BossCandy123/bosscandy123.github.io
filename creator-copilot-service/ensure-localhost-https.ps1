@@ -1,7 +1,7 @@
 param(
   [string]$OutputDir = (Join-Path $env:LOCALAPPDATA "CreatorCopilot\certs"),
   [string]$FriendlyName = "Creator Copilot Localhost",
-  [string]$PfxPassword = ""
+  [System.Security.SecureString]$PfxPassword = $null
 )
 
 $ErrorActionPreference = "Stop"
@@ -14,7 +14,15 @@ if (-not $PfxPassword) {
   } finally {
     $generator.Dispose()
   }
-  $PfxPassword = [Convert]::ToBase64String($passwordBytes)
+  $plainPassword = [Convert]::ToBase64String($passwordBytes)
+  $PfxPassword = ConvertTo-SecureString $plainPassword -AsPlainText -Force
+} else {
+  $secureStringBSTR = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($PfxPassword)
+  try {
+    $plainPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto($secureStringBSTR)
+  } finally {
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($secureStringBSTR)
+  }
 }
 
 $existing = Get-ChildItem Cert:\CurrentUser\My |

@@ -1,7 +1,6 @@
 {
-  "name": "creator-copilot-service",
+  "name": "@bosscandy123/creator-copilot-service",
   "version": "0.1.0",
-  "private": true,
   "description": "Hosted, license-aware AI suggestion gateway for Creator Copilot.",
   "main": "server.js",
   "scripts": {
@@ -11,6 +10,9 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "license": "UNLICENSED"
 }

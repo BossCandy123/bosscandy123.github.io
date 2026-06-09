@@ -25,11 +25,9 @@ $itemsToInclude = @(
   "popup.*",
   "README.md",
   "README_START_HERE.txt",
-  "security_reports",
   "service_worker.js",
   "START_WEB_APP.cmd",
   "start-openai-backend.cmd",
-  "WEB_APP_CHECKPOINT.md",
   "CREATE_LOADABLE_ZIP.ps1"
 )
 

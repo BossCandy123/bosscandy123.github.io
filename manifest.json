@@ -3,7 +3,7 @@
   "name": "EclipseStud Copilot OpenAI - LOAD THIS",
   "short_name": "EclipseStud",
   "version": "2.8.0",
-  "description": "A private MV3 live-room copilot for EclipseStud with OpenAI replies, room titles, goal helpers, session memory, and an isolated in-page panel.",
+  "description": "An MV3 live-room copilot for EclipseStud with OpenAI replies, room titles, goal helpers, session memory, and an isolated in-page panel.",
   "minimum_chrome_version": "116",
   "permissions": [
     "activeTab",

@@ -1,19 +1,19 @@
 # EclipseStud Copilot
 
-Personal Manifest V3 extension for EclipseStud live-room assistance: in-page OpenAI copilot panel, realistic viewer replies, today's room title, five-goal ladders, session memory, and diagnostics.
+Manifest V3 live-room copilot extension with an in-page assistant panel, realistic viewer replies, room title helpers, five-goal ladders, session memory, and diagnostics.
 
 ## Load Folder
 
-For development from GitHub, load this checkout folder in Edge:
+For development from GitHub, load the repository root in Edge after cloning this repo locally.
 
 ```text
-C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension-ver2.80
+stripchat_copilot_full_extension-ver2.80/
 ```
 
-For the packaged operator build, load this folder if it has been generated:
+For a packaged operator build, generate a clean local copy and load that folder instead.
 
 ```text
-C:\Users\bossc\Documents\EclipseStud_Copilot_FULL_PROJECT_v2.8.0
+EclipseStud_Copilot_FULL_PROJECT_v2.8.0/
 ```
 
 Correct markers:
@@ -57,17 +57,17 @@ The dashboard shares a local operator token with the extension, queues replies/t
 
 ## Commercial Product Work
 
-The personal extension remains isolated from the platform-neutral commercial foundation in:
+The extension remains isolated from the platform-neutral commercial foundation in:
 
 ```text
 creator-copilot-service
 ```
 
-That service owns hosted AI suggestions, license keys, plans, usage limits, and billing-event provisioning. It can be developed and deployed without changing this private extension.
+That service owns hosted AI suggestions, license keys, plans, usage limits, and billing-event provisioning. It can be developed and deployed without changing the extension.
 
 ## GitHub
 
-Source: https://github.com/BossCandy123/stripchat_copilot_full_extension-ver2.80 (private)
+Source: https://github.com/BossCandy123/stripchat_copilot_full_extension-ver2.80
 
 This project can be placed/copied under a `/plugins/EclipseStud_Copilot` (or similar) directory in a larger monorepo of creator tools if desired.
 

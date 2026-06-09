@@ -1,19 +1,19 @@
 EclipseStud Copilot Full Project v2.8.0
 
-For development from GitHub, use this checkout as the Edge extension load folder:
+For development from GitHub, use the repository root as the Edge extension load folder:
 
-  C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension-ver2.80
+  stripchat_copilot_full_extension-ver2.80/
 
-For the packaged operator build, use this folder if it has been generated:
+For the packaged operator build, use a clean generated copy:
 
-  C:\Users\bossc\Documents\EclipseStud_Copilot_FULL_PROJECT_v2.8.0
+  EclipseStud_Copilot_FULL_PROJECT_v2.8.0/
 
 Start order:
 
 1. Double-click START_WEB_APP.cmd from the folder you loaded in Edge.
 2. If it asks for an OpenAI API key, paste it once. Windows saves it encrypted for your user account.
 3. Open Edge > Extensions > Manage extensions > Load unpacked.
-4. Select the GitHub checkout folder above, or the packaged operator folder above. Do not select an older sibling folder.
+4. Select the cloned repository root above, or the packaged operator folder above. Do not select an older sibling folder.
 5. Open StripChat and pin/open EclipseStud Copilot.
 6. In the extension popup, click Web app to enable the dashboard bridge.
 7. Keep the dashboard open at https://127.0.0.1:8789/dashboard.

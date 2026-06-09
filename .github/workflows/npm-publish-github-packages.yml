@@ -16,7 +16,9 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+        working-directory: creator-copilot-service
       - run: npm test
+        working-directory: creator-copilot-service
 
   publish-gpr:
     needs: build
@@ -31,6 +33,8 @@ jobs:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+        working-directory: creator-copilot-service
       - run: npm publish
+        working-directory: creator-copilot-service
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

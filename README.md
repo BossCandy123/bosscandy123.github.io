@@ -4,10 +4,16 @@ Personal Manifest V3 extension for EclipseStud live-room assistance: in-page Ope
 
 ## Load Folder
 
-Load this folder in Edge:
+For development from GitHub, load this checkout folder in Edge:
 
 ```text
-C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension
+C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension-ver2.80
+```
+
+For the packaged operator build, load this folder if it has been generated:
+
+```text
+C:\Users\bossc\Documents\EclipseStud_Copilot_FULL_PROJECT_v2.8.0
 ```
 
 Correct markers:
@@ -61,7 +67,7 @@ That service owns hosted AI suggestions, license keys, plans, usage limits, and 
 
 ## GitHub
 
-Source: https://github.com/BossCandy123/EclipseStud-Copilot (private)
+Source: https://github.com/BossCandy123/stripchat_copilot_full_extension-ver2.80 (private)
 
 This project can be placed/copied under a `/plugins/EclipseStud_Copilot` (or similar) directory in a larger monorepo of creator tools if desired.
 

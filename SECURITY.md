@@ -2,20 +2,22 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+This is a private project. Only the current `2.8.x` line is maintained.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 2.8.x   | Yes                |
+| < 2.8   | No                 |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Do not open public issues with secrets, logs, tokens, API keys, screenshots, or private room details.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Report vulnerabilities privately to the repository owner. Include:
+
+- affected file or feature
+- reproduction steps
+- expected impact
+- whether any credential, token, or private data may have been exposed
+
+Rotate any exposed credential immediately. Local runtime tokens and API keys should stay out of the repository and be provided through extension settings, encrypted local startup prompts, or deployment secrets.

@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  creator-copilot-service-test:
+    docker:
+      - image: cimg/node:20.18
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run:
+          name: Install Creator Copilot service dependencies
+          command: npm ci
+          working_directory: ~/project/creator-copilot-service
+      - run:
+          name: Run Creator Copilot service tests
+          command: npm test
+          working_directory: ~/project/creator-copilot-service
+
+workflows:
+  verify:
+    jobs:
+      - creator-copilot-service-test

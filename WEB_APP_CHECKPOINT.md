@@ -3,7 +3,7 @@
 Timestamp: 2026-06-05 12:15 PM local
 
 Current repo:
-- `C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension`
+- `C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension-ver2.80`
 
 Finished state:
 - Extension visible version is `2.8.0`.

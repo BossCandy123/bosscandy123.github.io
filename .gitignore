@@ -1,1 +1,22 @@
 .aider*
+.vscode/
+
+# Local runtime secrets and machine-specific config
+.env
+.env.*
+!.env.example
+backend-proxy/es-backend-token.txt
+creator-copilot-service/data/
+creator-copilot-service/certs/
+*.pfx
+*.pem
+*.key
+*.pass.txt
+
+# Generated packages and local logs
+*.zip
+*.log
+torout.txt
+torerr.txt
+node_modules/
+npm-debug.log*

@@ -1,15 +1,19 @@
 EclipseStud Copilot Full Project v2.8.0
 
-Use this one folder as the Edge extension load folder:
+For development from GitHub, use this checkout as the Edge extension load folder:
 
-  EclipseStud_Copilot_FULL_PROJECT_v2.8.0
+  C:\Users\bossc\OneDrive\Desktop\stripchat_copilot_full_extension-ver2.80
+
+For the packaged operator build, use this folder if it has been generated:
+
+  C:\Users\bossc\Documents\EclipseStud_Copilot_FULL_PROJECT_v2.8.0
 
 Start order:
 
-1. Double-click START_WEB_APP.cmd   (or use the new helper:  powershell -ExecutionPolicy Bypass -File start-gui.ps1 -OpenAiKey "sk-..." )
+1. Double-click START_WEB_APP.cmd from the folder you loaded in Edge.
 2. If it asks for an OpenAI API key, paste it once. Windows saves it encrypted for your user account.
 3. Open Edge > Extensions > Manage extensions > Load unpacked.
-4. Select this full project folder, not an older sibling folder.
+4. Select the GitHub checkout folder above, or the packaged operator folder above. Do not select an older sibling folder.
 5. Open StripChat and pin/open EclipseStud Copilot.
 6. In the extension popup, click Web app to enable the dashboard bridge.
 7. Keep the dashboard open at https://127.0.0.1:8789/dashboard.
@@ -34,4 +38,4 @@ What is included (AI is now the actual core of the extension):
 
 The goal: the model focuses on performing. The AI watches, reasons at high level, and gives perfect, paste/say-ready moves with almost zero extra work.
 
-Do not load old folders named stripchat_copilot_full_extension_updated, ES_Copilot_AI_FIXED_LOAD_THIS, or older ES_Copilot_READY_ZIP copies.
+Do not load old folders named stripchat_copilot_full_extension, stripchat_copilot_full_extension_updated, ES_Copilot_AI_FIXED_LOAD_THIS, or older ES_Copilot_READY_ZIP copies.

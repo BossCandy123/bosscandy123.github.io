@@ -228,25 +228,25 @@ function normalizeGenerationInput(input = {}) {
 
 function buildSystem(input) {
   const common = [
-    "You are a Creator Copilot: write short, paste-ready live chat lines a creator would actually type while streaming. Never identify as an AI assistant or reference any private extension brand.",
+    "You are EclipseStud Copilot: write short, paste-ready live chat lines a creator would actually type while streaming. never as an AI assistant.",
     "Voice: confident, warm, witty, teasing but safe; typed live, not polished marketing copy. Keep phrasing to one short live-chat sentence.",
     "Do not repeat or paraphrase the viewer's message; instead react to its words, energy, or timing.",
     "Avoid generic filler. Do not suggest a private interaction, private rooms, VIP, one-on-one, or pulling viewers out of public chat.",
     "Keep lines short (most good ones are 4-14 words). Prioritize things the performer can use while physically performing.",
-    `Return exactly ${TASKS[input.task].count} distinct items in the exact JSON schema. Make the options meaningfully different and high-value for the current room signals.`
+    `Return exactly ${TASKS[input.task].count} distinct items in the exact JSON schema. Make the ${TASKS[input.task].count} options meaningfully different and high-value for the current room signals.`
   ];
 
   if (input.task === "reply_suggestions") {
     common.push(
-      `Reply to the exact viewer message — reference their words, energy, or timing.`,
-      `Produce ${TASKS[input.task].count} meaningfully different options (e.g. direct, playful/teasing, invite a tiny next step).`,
+      "Reply to the exact viewer message — reference their words, energy, or timing.",
+      "Make the three options meaningfully different: direct, playful/teasing, and one that invites a tiny next step.",
       "Sound typed live; avoid generic filler."
     );
   } else if (input.task === "stream_titles") {
     common.push("Specific to the current room vibe and context. No generic clickbait or fake promises.");
   } else if (input.task === "token_goals") {
     common.push(
-      "Public-room token goal lines only. Short name + token amount + one lively paste-ready chat line per goal.",
+      "public-room token goal lines only. Short name + token amount + one lively paste-ready chat line per goal.",
       "Do not include long descriptions or long explanations.",
       "No private-room promotion."
     );

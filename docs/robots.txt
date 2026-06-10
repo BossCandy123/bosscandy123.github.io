@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stripchataffiliate.github.io/sitemap.xml
+Sitemap: https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/sitemap.xml

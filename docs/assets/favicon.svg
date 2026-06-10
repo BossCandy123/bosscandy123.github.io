@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="EclipseStud Live">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2d86"/>
+      <stop offset="100%" stop-color="#ff77bb"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="#09060c"/>
+  <circle cx="128" cy="128" r="64" fill="none" stroke="url(#g)" stroke-width="18"/>
+  <path d="M128 64a64 64 0 0 1 0 128" fill="#09060c"/>
+</svg>

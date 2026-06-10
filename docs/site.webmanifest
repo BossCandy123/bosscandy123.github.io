@@ -1,0 +1,15 @@
+{
+  "name": "EclipseStud Live",
+  "short_name": "EclipseStud",
+  "start_url": "/stripchat_copilot_full_extension-ver2.80/",
+  "display": "standalone",
+  "background_color": "#08050b",
+  "theme_color": "#0b0710",
+  "icons": [
+    {
+      "src": "/stripchat_copilot_full_extension-ver2.80/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

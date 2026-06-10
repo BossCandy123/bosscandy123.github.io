@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09060c"/>
+      <stop offset="50%" stop-color="#140a1a"/>
+      <stop offset="100%" stop-color="#0a060f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2d86"/>
+      <stop offset="100%" stop-color="#ff7fbe"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="920" cy="220" r="110" fill="none" stroke="url(#accent)" stroke-width="12"/>
+  <rect x="72" y="86" width="260" height="54" rx="16" fill="#130c1a" stroke="#3e2035"/>
+  <text x="104" y="122" fill="#f7f3fa" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">EclipseStud</text>
+  <text x="282" y="122" fill="#ff4f9b" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Live</text>
+  <text x="72" y="260" fill="#f7f3fa" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800">Watch Live Shows.</text>
+  <text x="72" y="348" fill="#ff4f9b" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800">Discover Creator Tools.</text>
+  <text x="72" y="424" fill="#d4cadd" font-family="Arial, Helvetica, sans-serif" font-size="34">
+    Stripchat fan landing page and new model guide for EclipseStud.
+  </text>
+  <rect x="72" y="486" width="340" height="74" rx="20" fill="url(#accent)"/>
+  <text x="125" y="534" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">Watch On Stripchat</text>
+</svg>

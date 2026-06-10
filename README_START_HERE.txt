@@ -7,7 +7,9 @@ For development from GitHub, use the repository root as the Edge extension load 
 For the packaged operator build, use a clean generated copy:
 
   EclipseStud_Copilot_FULL_PROJECT_v2.8.0/
+This repository also includes a ready-generated release archive:
 
+  EclipseStud_Copilot_v2.8.0_loadable.zip
 Start order:
 
 1. Double-click START_WEB_APP.cmd from the folder you loaded in Edge.

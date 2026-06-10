@@ -2,6 +2,10 @@
 
 ## Live URLs
 
+- Home: `https://stripchataffiliate.github.io/`
+- Watch guide: `https://stripchataffiliate.github.io/watch/`
+- Model guide: `https://stripchataffiliate.github.io/models/`
+- Creator tools: `https://stripchataffiliate.github.io/creator-tools/`
 - Home: `https://bosscandy123.github.io/`
 - Watch guide: `https://bosscandy123.github.io/watch/`
 - Model guide: `https://bosscandy123.github.io/models/`
@@ -27,6 +31,7 @@ Watch EclipseStud live on Stripchat here:
 `https://stripchat.com/EclipseStud/follow-me`
 
 I also put together a fan + creator hub with a new model guide and creator tools page:
+`https://stripchataffiliate.github.io/`
 `https://bosscandy123.github.io/`
 
 ## Reddit-Style Promo
@@ -40,6 +45,7 @@ I also added a site with:
 - a creator tools page
 
 Main hub:
+`https://stripchataffiliate.github.io/`
 `https://bosscandy123.github.io/`
 
 ## Profile / Link-in-Bio Stack

@@ -2,10 +2,10 @@
 
 ## Live URLs
 
-- Home: `https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/`
-- Watch guide: `https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/watch/`
-- Model guide: `https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/models/`
-- Creator tools: `https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/creator-tools/`
+- Home: `https://bosscandy123.github.io/`
+- Watch guide: `https://bosscandy123.github.io/watch/`
+- Model guide: `https://bosscandy123.github.io/models/`
+- Creator tools: `https://bosscandy123.github.io/creator-tools/`
 - Affiliate profile: `https://stripchat.com/EclipseStud/follow-me`
 
 ## Primary Search Targets
@@ -27,7 +27,7 @@ Watch EclipseStud live on Stripchat here:
 `https://stripchat.com/EclipseStud/follow-me`
 
 I also put together a fan + creator hub with a new model guide and creator tools page:
-`https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/`
+`https://bosscandy123.github.io/`
 
 ## Reddit-Style Promo
 
@@ -40,7 +40,7 @@ I also added a site with:
 - a creator tools page
 
 Main hub:
-`https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/`
+`https://bosscandy123.github.io/`
 
 ## Profile / Link-in-Bio Stack
 

@@ -420,6 +420,13 @@ h3 {
   font-weight: 700;
 }
 
+.text-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .stats-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }

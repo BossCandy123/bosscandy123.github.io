@@ -2,8 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/</loc>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/models/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/watch/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://bosscandy123.github.io/stripchat_copilot_full_extension-ver2.80/creator-tools/</loc>
+    <changefreq>weekly</changefreq>
   </url>
 </urlset>

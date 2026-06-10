@@ -65,9 +65,9 @@ creator-copilot-service
 
 That service owns hosted AI suggestions, license keys, plans, usage limits, and billing-event provisioning. It can be developed and deployed without changing the extension.
 
-## GitHub
+## Site
 
-Source: https://github.com/BossCandy123/stripchat_copilot_full_extension-ver2.80
+Source: https://stripchataffiliate.github.io/
 
 This project can be placed/copied under a `/plugins/EclipseStud_Copilot` (or similar) directory in a larger monorepo of creator tools if desired.
 

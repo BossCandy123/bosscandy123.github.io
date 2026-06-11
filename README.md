@@ -16,6 +16,13 @@ For a packaged operator build, generate a clean local copy and load that folder 
 EclipseStud_Copilot_FULL_PROJECT_v2.8.0/
 ```
 
+A ready-to-load package folder and zip archive have been generated in the repository root:
+
+```text
+EclipseStud_Copilot_FULL_PROJECT_v2.8.0/
+EclipseStud_Copilot_v2.8.0_loadable.zip
+```
+
 Correct markers:
 
 ```text

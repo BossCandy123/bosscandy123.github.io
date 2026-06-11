@@ -6,6 +6,29 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+function Convert-PlainTextToSecureString {
+  param([string]$Value)
+
+  $secure = New-Object System.Security.SecureString
+  foreach ($character in ($Value.ToCharArray())) {
+    $secure.AppendChar($character)
+  }
+  $secure.MakeReadOnly()
+  return $secure
+}
+
+function Ensure-CertificateDrive {
+  if (Get-PSDrive -Name Cert -ErrorAction SilentlyContinue) {
+    return
+  }
+
+  if (-not (Get-PSDrive -Name Cert -ErrorAction SilentlyContinue)) {
+    New-PSDrive -Name Cert -PSProvider Certificate -Root "\" -Scope Global | Out-Null
+  }
+}
+
+Ensure-CertificateDrive
+
 if (-not $PfxPassword) {
   $passwordBytes = New-Object byte[] 32
   $generator = [System.Security.Cryptography.RandomNumberGenerator]::Create()
@@ -15,7 +38,7 @@ if (-not $PfxPassword) {
     $generator.Dispose()
   }
   $plainPassword = [Convert]::ToBase64String($passwordBytes)
-  $PfxPassword = ConvertTo-SecureString $plainPassword -AsPlainText -Force
+  $PfxPassword = Convert-PlainTextToSecureString -Value $plainPassword
 } else {
   $secureStringBSTR = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($PfxPassword)
   try {
@@ -51,9 +74,8 @@ New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
 $pfxPath = Join-Path $OutputDir "creator-copilot-localhost.pfx"
 $cerPath = Join-Path $OutputDir "creator-copilot-localhost.cer"
 $passphraseFile = Join-Path $OutputDir "creator-copilot-localhost.pass.txt"
-$securePassword = ConvertTo-SecureString $PfxPassword -AsPlainText -Force
 
-Export-PfxCertificate -Cert "Cert:\CurrentUser\My\$($existing.Thumbprint)" -FilePath $pfxPath -Password $securePassword | Out-Null
+Export-PfxCertificate -Cert "Cert:\CurrentUser\My\$($existing.Thumbprint)" -FilePath $pfxPath -Password $PfxPassword | Out-Null
 Export-Certificate -Cert "Cert:\CurrentUser\My\$($existing.Thumbprint)" -FilePath $cerPath -Force | Out-Null
 
 $trusted = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Thumbprint -eq $existing.Thumbprint
@@ -61,7 +83,7 @@ if (-not $trusted) {
   Import-Certificate -FilePath $cerPath -CertStoreLocation "Cert:\CurrentUser\Root" | Out-Null
 }
 
-Set-Content -Path $passphraseFile -Value $PfxPassword -NoNewline
+Set-Content -Path $passphraseFile -Value $plainPassword -NoNewline
 
 [pscustomobject]@{
   thumbprint = $existing.Thumbprint

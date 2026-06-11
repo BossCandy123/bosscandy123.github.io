@@ -35,7 +35,12 @@ $excludePatterns = @(
   "*.git*",
   "creator-copilot-service/certs/*",
   "creator-copilot-service/data/*",
+  "creator-copilot-service/creator-copilot-service/*",
+  "creator-copilot-service/*/certs/*",
+  "creator-copilot-service/*/data/*",
   "backend-proxy/es-backend-token.txt",
+  "creator-copilot-service/*.log",
+  "creator-copilot-service/*/*.log",
   "*.log",
   "*.zip",
   "node_modules/*",
@@ -47,7 +52,7 @@ Write-Host "Creating loadable zip: $zipPath"
 
 # Simple filter: include listed top-level items, then filter excludes
 $files = Get-ChildItem -Path $root -Recurse -File | Where-Object {
-  $rel = $_.FullName.Substring($root.Length + 1)
+  $rel = $_.FullName.Substring($root.Length + 1).Replace('\', '/')
   $include = $false
   foreach ($inc in $itemsToInclude) {
     if ($rel -like "$inc*" -or $rel -eq $inc) { $include = $true; break }

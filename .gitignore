@@ -8,6 +8,7 @@
 backend-proxy/es-backend-token.txt
 creator-copilot-service/data/
 creator-copilot-service/certs/
+creator-copilot-service/creator-copilot-service/
 *.pfx
 *.pem
 *.key
